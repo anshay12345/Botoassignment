@@ -1,13 +1,29 @@
 const AWS = require('aws-sdk');
-const { parse } = require("uuid");
+//const { parse } = require("uuid");
 let ec2=new AWS.EC2({
         region: 'us-east-1',
-        accessKeyId: 'AKIAYGSSV4YHBHV2JD3C',
-        secretAccessKey: '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'
       })
   
       
 class Ec2Service{
+
+        
+     async describeInstancesService(){
+        const data = await ec2.describeInstances().promise();
+        let arr=[];
+        for (let i = 0; i < data["Reservations"].length; i++) {
+          var obj = {};
+          obj["InstanceId"] = data["Reservations"][i].Instances[0]["InstanceId"];
+          obj["ImageId"] = data["Reservations"][i].Instances[0]["ImageId"];
+          obj["InstanceType"] =
+            data["Reservations"][i].Instances[0]["InstanceType"];
+          obj["Status"] = data["Reservations"][i].Instances[0]["State"]["Name"];
+          arr[i] = obj;
+        }
+        return arr
+     }
+
+
     async instanceCreate(userObj){
        
         const params = {

@@ -1,34 +1,93 @@
-var AWS = require('aws-sdk');
-var uuid = require('uuid');
-let s3=new AWS.S3({
-  region: 'us-east-1',
-  accessKeyId: 'AKIAYTGAIOTOASWOQRBV',
-  secretAccessKey: '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'
-})
+import React, { useState } from "react";
+import { useEffect } from "react";
 
-  
-    var bucketName='anshay'+uuid.v4()
-    var keyName='newfile.txt'
-    var body="This is the body"
-    var bucketPromise = s3.createBucket({
-      Bucket: bucketName
-    },(error,success)=>{
-      if(error){
-        console.log(error)
-      }
-      else{
-        console.log(success)
-      }
-    }).promise();
-    bucketPromise.then(
-      function(data) {
-        var objectParams = {Bucket: bucketName, Key: keyName, Body: body};
-        var uploadPromise = s3.putObject(objectParams).promise();
-        uploadPromise.then(
-          function(data) {
-            console.log(bucketName + " Bucket has been feaded with the data");       
-          });
-    }).catch(
-      function(err) {
-        console.error(err, err.stack);
+import { useNavigate } from "react-router-dom";
+import Userservice from "../Services/Userservice";
+
+var data = [];
+function ListEc2() {
+  const navigate = useNavigate();
+  const getall = () => {
+    Userservice.getallInstance().then((res) => {
+      console.log(res.data);
+      data = res.data;
+      navigate("/list");
+      // dispatch({type:"users",value : res.data})
     });
+  };
+  const StopHandler = (id) => {
+    Userservice.StopInstance(id).then((res) => {
+      getall();
+      navigate("/list");
+    });
+  };
+  const StartHandler = (id) => {
+    Userservice.StartInstance(id).then((res) => {
+      getall();
+      navigate("/list");
+    });
+  };
+  const TerminateHandler = (id) => {
+    Userservice.TerminateInstance(id).then((res) => {
+      getall();
+      navigate("/list");
+    });
+  };
+  useEffect(() => {
+    getall();
+  }, []);
+  return (
+    <div className="container">
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>Instance Id</th>
+            <th>Image Id</th>
+            <th>Instance Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+            <th>Terminate</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((obj) => (
+            <tr key={obj.InstanceId}>
+              <td>{obj.InstanceId}</td>
+              <td>{obj.ImageId}</td>
+              <td>{obj.InstanceType}</td>
+              <td>{obj.Status}</td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => StartHandler(obj.InstanceId)}
+                >
+                  Start
+                </button>
+
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => StopHandler(obj.InstanceId)}
+                >
+                  Stop
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => TerminateHandler(obj.InstanceId)}
+                >
+                  Terminate
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default ListEc2;

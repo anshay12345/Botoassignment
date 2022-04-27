@@ -6,7 +6,7 @@ const UserService = require("../ec2Service")
 const services = new UserService()
 
 router.get("/", async (req,res)=>{
-    const data=await services.instanceDetails()
+    const data=await services.describeInstancesService()
     res.send(data)
 })
 router.post("/create", async (req,res)=>{

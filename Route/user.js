@@ -5,11 +5,7 @@ const serviceData = new UserService()
 router.get("/", async (req,res)=>{
     const data = await serviceData.getBucket()
     console.log(data)
-    res.send(`
-        <table>
-          <th>${data}</th>
-        </table>
-    `)
+    res.send(data)
 })
 
 router.post("/bucket", (req,res)=>{
@@ -17,12 +13,12 @@ router.post("/bucket", (req,res)=>{
     res.send(data)
 })
 
-router.delete("/delobj/:name", (req,res)=>{
+router.post("/delobj", (req,res)=>{
     const data=serviceData.deleteObject(req.body)
     res.send(data)
 })
-router.delete("/:name", (req,res)=>{
-    const data=serviceData.deleteBucket(req.param.name)
+router.delete("/delete", (req,res)=>{
+    const data=serviceData.deleteBucket(req.body)
     res.send(data)
 })
 

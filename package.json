@@ -3,7 +3,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "helmet": "^5.0.2",
-    "mongoose": "^6.3.1"
+    "mongoose": "^6.3.1",
+    "redux": "^4.2.0"
   },
   "name": "aws-nodejs-sample",
   "description": "A simple Node.js application illustrating usage of the SDK for JavaScript.",

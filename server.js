@@ -13,16 +13,6 @@ app.use(cors())
 app.use("/", require("./Route/user"))
 app.use("/instance", require("./Route/ec2"))
 
-app.listen(3001, (e)=>{
-    console.log("Connected")
-
-    mongoose.connect("mongodb://localhost/S3Assignment").then((result)=>{
-        console.log("Database Connected")
-    }).catch((e)=>{
-        console.log("Database connection failed")
-        console.log(e)
-    })
-
-})
+app.listen(3001)
 
 

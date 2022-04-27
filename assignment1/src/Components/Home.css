@@ -1,0 +1,56 @@
+
+.Home {
+    text-align: center;
+    align-items: center;
+    margin-top: 10%;
+    
+    background-color: aliceblue;
+    width: 30%;
+    height: 30%;
+    margin-left: 15%;
+    padding-bottom: 3rem;
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    -webkit-column-gap:.75rem;
+    column-gap:.75rem;
+    margin-bottom:1.5rem;
+    align-items:center;
+    border-radius: 2%;
+    
+    
+  }
+  .form{
+    padding: 1%;
+    margin-top: 10%;
+  }
+  
+  .outerDiv{
+    display: flex;
+    margin-left: 300px;
+ 
+  }
+  .body{
+    align-items: center;
+  }
+  .SecondDiv{
+    padding: 0;
+  }
+  .CardMainDiv{
+    padding-top: 10px;
+    text-align: left;
+    
+}
+
+.button{
+    color:#fff;
+    display:block;
+    width:90%;
+    background-color: #f28ab2;
+    margin:2rem auto 0;
+    text-transform:capitalize;
+    font-size:1.2rem;
+    padding:.5rem 0;
+    letter-spacing:.1rem;
+    letter-spacing:var(--spacing);
+    border-radius:7%;
+    cursor:pointer
+}
