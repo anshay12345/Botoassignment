@@ -4,6 +4,7 @@ import UserService from "../Service/UserService"
 import "./bc.css"
 const StopInstance=()=>{
     const [instanceid, setId]=useState("")
+    const [statusCheck, setStatusCheck] = useState("")
     const onIdHandler=(event)=>{
         setId(event.target.value)
     }
@@ -12,7 +13,10 @@ const StopInstance=()=>{
         
        // console.log(instanceidObj)
         UserService.stopInstanceMethod({instanceid:instanceid}).then((res)=>{
-            console.log(res)
+            //console.log(res)
+            if(res.status===200){
+                setStatusCheck(1)
+            }
         })
     }
     return(
@@ -24,6 +28,7 @@ const StopInstance=()=>{
             </div>
                 <button type="submit" class="btn btn-primary bt">Stop</button>
             </form>
+            {statusCheck? <span>Instance Stopped Successfully</span>:""}
         </div>
     )
 }

@@ -44,6 +44,7 @@ const BucketListing =()=>{
         </tr>
       ))}
     </tbody>
+  
   </table>
   <button type="button" className="btn btn-primary" onClick={()=>navigate("/create")}>New Bucket</button>
     </div>  

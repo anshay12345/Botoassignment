@@ -45,7 +45,7 @@ const CreateInstance=()=>{
     }
    
     return(
-        <div className="container bc">
+        <div className="container ic">
             
             <form onSubmit={onSubmitHandler} method="post" action="">
                 <div className="form-group">

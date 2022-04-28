@@ -33,7 +33,7 @@ const DisplayInstance =()=>{
             <th>Image Id</th>
             <th>Instance Type</th>
             <th>Status</th>
-        
+         
           </tr>
         </thead>
         <tbody>
@@ -43,11 +43,6 @@ const DisplayInstance =()=>{
               <td>{obj.ImageId}</td>
               <td>{obj.InstanceType}</td>
               <td>{obj.Status}</td>
-              <td>
-                
-
-                
-              </td>
             </tr>
           ))}
         </tbody>
