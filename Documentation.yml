@@ -4,6 +4,7 @@ Breif of the documentation:
     --> Docker Image 
     --> Github link
 
+-------------------------------------------BACKEND------------------------------------------------
 
 1: ABOUT PROJECT SOURCE CODE:
   --> main node file 
@@ -12,8 +13,20 @@ Breif of the documentation:
                       
       - first route to "/" (user.js)
           GET    - "/bucket"  -->creating bucket along with creating files within it and giving data to it
-          DELETE - "/delobj/:name" -->deleting content of the bucket with name <name>
-          DELETE - "/:name" -->deleting the whole bucket with name <name>
+                          # {
+                          #   "name": "newbucket",
+ SAMPLE JSON DATA------>> #     "fileName": "file1",
+                          #     "data": "New File"
+                          # }       
+          POST - "/delobj/:name" -->deleting content of the bucket with name <name>(unique name)
+                          # {
+SAMPLE JSON DATA------>>  #   "Bucket": "newbucket",
+                          #   "Key": "file1"
+                          # }  
+          DELETE - "/delete" -->deleting the whole bucket with name <name>(unique name)
+                          # {
+SAMPLE JSON DATA------>>  #   "Bucket": "newbucket",
+                          # } 
       - second route to "/instance" (ec2.js)
           GET  - "/" -->listing all the instances details
           POST - "/create" -->creating an instance
@@ -48,18 +61,24 @@ Breif of the documentation:
                 "mongoose": "^6.3.1"
               }
 2: DOCKER IMAGE:
-  - "anshay123/cliassignment:latest"
-     
+  - "anshay123/cliassignment:latest"   --> Docker image for backend
+  - "anshay123/frontend"   --> Docker image for frontend part
+  Both the services are connected through docker-compose file     
 
 3: GITHUB LINK:
   - https://github.com/anshay12345/cliassignment.git
 
+-------------------------------------------FRONTEND------------------------------------------------
+
+                                      
+
+PARENT APP                  CHILD APP  
 
 
-
-Improvements:
-  -proper error handling with proper message
-  -use let 
-  -make it modular
-  -postmen research
-   
+                            BucketCreation  
+                            BucketListing  
+                            CreationInstance 
+App------------->>          DeleteBucketComponent 
+                            DisplayInstance  
+                            StopInstance  
+                            TerminateInstance
