@@ -1,9 +1,27 @@
 
 .Home {
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: left;
     margin-top: 10%;
+  
+    background-color: aliceblue;
+    width: 30%;
+    height: 30%;
+    padding-bottom: 7.6rem;
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+    -webkit-column-gap:.75rem;
+    column-gap:.75rem;
+    margin-bottom:1.5rem;
+    align-items:center;
+    border-radius: 2%;
+   
     
+  }
+  .Home1{
+    text-align: center;
+    align-items: left;
+    margin-top: 10%;
+  
     background-color: aliceblue;
     width: 30%;
     height: 30%;
@@ -15,8 +33,7 @@
     margin-bottom:1.5rem;
     align-items:center;
     border-radius: 2%;
-    
-    
+   
   }
   .form{
     padding: 1%;
@@ -37,6 +54,7 @@
   .CardMainDiv{
     padding-top: 10px;
     text-align: left;
+
     
 }
 

@@ -46,6 +46,7 @@ const CreateInstance=()=>{
    
     return(
         <div className="container bc">
+            
             <form onSubmit={onSubmitHandler} method="post" action="">
                 <div className="form-group">
                 <label htmlFor="ImageId">ImageId</label>
@@ -63,7 +64,7 @@ const CreateInstance=()=>{
                 <label htmlFor="MaxCount">MaxCount</label>
                 <input type="number" class="form-control" name="MaxCount" onChange={onChangeMaxCountHandler}></input>
                </div>
-                <button type="submit">Click</button>
+                <button type="submit" class="btn btn-primary bt">Submit</button>
             </form>
            {value?<span>Instance Created Successfully</span>: ""}
         </div>

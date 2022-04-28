@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   padding-bottom: 3rem;
+  background-size: cover;
 }
 
 .App-logo {
@@ -37,5 +38,10 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-light:hover{
+  background-color: #61dafb;
+}
+
 
 
